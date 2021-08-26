@@ -12,7 +12,7 @@ install_deps() {
 update_ipxe_script() {
     local script="$1"
 
-    cat "${script}" >> iso/dynamic.ipxe
+    cat "${script}" > iso/custom.ipxe
 }
 
 do_kexec_load() {
