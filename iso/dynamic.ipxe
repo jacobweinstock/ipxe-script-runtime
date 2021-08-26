@@ -23,4 +23,7 @@ iseq ${x} ${attempts} && goto fail ||
 inc x
 goto loop
 
-
+:fail
+echo Failed to get a DHCP response after ${attempts} attempts
+echo
+shell
