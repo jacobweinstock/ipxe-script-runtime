@@ -12,7 +12,6 @@ install_deps() {
 update_ipxe_script() {
     local script="$1"
 
-    echo -e "" >> iso/dynamic.ipxe
     cat "${script}" >> iso/dynamic.ipxe
 }
 

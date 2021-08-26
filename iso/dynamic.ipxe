@@ -9,6 +9,7 @@ set user-class tinkerbell
 # we fail.
 :loop
 dhcp || goto nodhcp
+goto boot
 
 :nodhcp
 echo No DHCP response, retrying (attempt ${x}/${attempts})
@@ -27,3 +28,5 @@ goto loop
 echo Failed to get a DHCP response after ${attempts} attempts
 echo
 shell
+
+:boot
