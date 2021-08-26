@@ -13,7 +13,7 @@ update_ipxe_script() {
     local script="$1"
 
     echo -e "" >> iso/dynamic.ipxe
-    echo -e "${script}" >> iso/dynamic.ipxe
+    cat "${script}" >> iso/dynamic.ipxe
 }
 
 do_kexec_load() {
