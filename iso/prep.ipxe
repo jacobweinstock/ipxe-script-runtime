@@ -1,0 +1,32 @@
+#!ipxe
+
+set attempts:int32 5
+set x:int32 0
+
+set user-class tinkerbell
+
+# Try to get an IP via DHCP, retrying a couple of times if
+# we fail.
+:loop
+dhcp || goto nodhcp
+goto boot
+
+:nodhcp
+echo No DHCP response, retrying (attempt ${x}/${attempts})
+goto retry
+
+:nobootconfig
+echo No DHCP response, retrying (attempt ${x}/${attempts})
+goto retry
+
+:retry
+iseq ${x} ${attempts} && goto fail ||
+inc x
+goto loop
+
+:fail
+echo Failed to get a DHCP response after ${attempts} attempts
+echo
+shell
+
+:boot
